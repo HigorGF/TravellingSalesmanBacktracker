@@ -92,7 +92,7 @@ int melhorpesoEncontrado = 0;
 int *melhorArray;
 
 
-
+//Testando
 
 int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor, int pesoatual)  {
   //O Vertice Atual é o Analisado
