@@ -150,7 +150,7 @@ int iniciaEexecuta(struct grafo *G, int verticeInicial) {
 	
 	int k =0;
 	for(k=0;k<G->M ; k++){
-		arestaUsada[k] = melhorArray[k];
+		arestaUsada[k] = melhorArray[k]; //Reeinverto para ficar na melhor solução
 			}
 
 
