@@ -1,4 +1,0 @@
-	int N;  /**< Número de vértices */
-	int M;  /**< Número de arestas */
-	int *A; /**< ponteiro para lista de arestas */
-	int *S; /**< ponteiro para lista de flags de seleção de aresta */
