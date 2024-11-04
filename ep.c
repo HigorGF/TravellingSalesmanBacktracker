@@ -88,7 +88,7 @@ void voltarCaminho (struct grafo *G, int arestaDiminuir, int verticeAtual) {  //
 }
 
 
-int melhorpesoEncontrado = 0;
+int melhorpesoEncontrado = -1;
 int *melhorArray;
 
 
@@ -98,37 +98,46 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
   //O Vertice Atual é o Analisado
 
 	int iAresta=0;
-	int peso = pesoatual + G->A[verticeAtual*3+2];
+	int peso = pesoatual + G->A[iAresta*3+2];;
 
   	while( (iAresta<G->M) && (!ehSolucao(G)) ) { //Enquanto eu não tiver passado por todas as arestas e não tiver achado a solução	
     	if( ehAceitavel (G, iAresta, verticeAtual) ) {  
 
-			iAresta++;
 			
+
+			
+
 			int verticeProx=aumentaCaminho (G, iAresta, verticeAtual);
 			backtracking(G, verticeProx, melhorpeso, melhor, peso);
 			voltarCaminho(G, iAresta, verticeAtual);
+
+			
     	}
+		iAresta++;
   	} 
 
 	if (ehSolucao(G)) {
-		puts ("Achou solução");
-
-		if(peso < *melhorpeso){
+		if(peso*-1 < *melhorpeso || *melhorpeso == -1){
 			*melhorpeso = peso;
 			int j = 0;
 			for(j=0;j<G->M ; j++){
 				melhor[j] = arestaUsada[j];
 			}
 		}
-		return 1;
   	}
 
 
-	else if(pesoatual == 0 && *melhorpeso == 0) {
+	if(pesoatual == 0) { //Só pra conferir se era a primeira chamada ou não
+		if(melhorpeso == 0){
+
   		puts ("Não achou solução");
   		return 0;
+		}
+
+		else puts ("Achou solução");
+		return 1;
 	}
+
 }
 
 
