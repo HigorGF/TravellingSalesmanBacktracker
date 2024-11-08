@@ -117,9 +117,10 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
   	} 
 
 	if (ehSolucao(G)) {
-		printf("%d",peso);
+		
 		if(peso < *melhorpeso || *melhorpeso == -1){
 			*melhorpeso = peso;
+			//printf("%d\n",*melhorpeso);
 			int j = 0;
 			for(j=0;j<G->M ; j++){
 				melhor[j] = arestaUsada[j];
