@@ -98,7 +98,7 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
   //O Vertice Atual é o Analisado
 
 	int iAresta=0;
-	int peso = pesoatual + G->A[iAresta*3+2];;
+	int peso = pesoatual;
 
   	while( (iAresta<G->M) && (!ehSolucao(G)) ) { //Enquanto eu não tiver passado por todas as arestas e não tiver achado a solução	
     	if( ehAceitavel (G, iAresta, verticeAtual) ) {  
@@ -108,7 +108,7 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
 			
 
 			int verticeProx=aumentaCaminho (G, iAresta, verticeAtual);
-			backtracking(G, verticeProx, melhorpeso, melhor, peso);
+			backtracking(G, verticeProx, melhorpeso, melhor, peso+ G->A[iAresta*3+2]);
 			voltarCaminho(G, iAresta, verticeAtual);
 
 			
@@ -118,7 +118,7 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
 
 	if (ehSolucao(G)) {
 		printf("%d",peso);
-		if(peso*-1 < *melhorpeso || *melhorpeso == -1){
+		if(peso < *melhorpeso || *melhorpeso == -1){
 			*melhorpeso = peso;
 			int j = 0;
 			for(j=0;j<G->M ; j++){
