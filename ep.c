@@ -117,6 +117,7 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
   	} 
 
 	if (ehSolucao(G)) {
+		printf("%d",peso);
 		if(peso*-1 < *melhorpeso || *melhorpeso == -1){
 			*melhorpeso = peso;
 			int j = 0;
