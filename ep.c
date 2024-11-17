@@ -158,6 +158,10 @@ int iniciaEexecuta(struct grafo *G, int verticeInicial) {
 	// como arestausada não é restaurada no retorno da recursão, quando acha o circuito, posso passar para o imprimeMermaid.
 		G->S[i]=arestaUsada[i];
 	}
+
+	melhorpesoEncontrado = -1;
+	
+
 	return r;
 }
 
