@@ -105,8 +105,7 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
 
 			
 
-			
-
+	
 			int verticeProx=aumentaCaminho (G, iAresta, verticeAtual);
 			backtracking(G, verticeProx, melhorpeso, melhor, peso+ G->A[iAresta*3+2]);
 			voltarCaminho(G, iAresta, verticeAtual);
@@ -130,10 +129,9 @@ int backtracking(struct grafo *G, int verticeAtual, int *melhorpeso, int *melhor
 
 
 	if(pesoatual == 0) { //Só pra conferir se era a primeira chamada ou não
-		if(melhorpeso == 0){
-
-  		puts ("Não achou solução");
-  		return 0;
+		if(*melhorpeso == -1){
+			puts ("Não achou solução");
+			return 0;
 		}
 
 		else puts ("Achou solução");
